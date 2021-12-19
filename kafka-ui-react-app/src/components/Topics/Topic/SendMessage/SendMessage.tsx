@@ -45,7 +45,7 @@ const SendMessage: React.FC<Props> = ({
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting, isDirty },
+    formState: { isSubmitting },
     control,
   } = useForm({ mode: 'onChange' });
   const history = useHistory();
@@ -197,7 +197,7 @@ const SendMessage: React.FC<Props> = ({
         <button
           type="submit"
           className="button is-primary"
-          disabled={!isDirty || isSubmitting || messageIsSending}
+          disabled={isSubmitting || messageIsSending}
         >
           Send
         </button>
