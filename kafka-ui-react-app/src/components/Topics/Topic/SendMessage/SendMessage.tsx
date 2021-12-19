@@ -83,9 +83,10 @@ const SendMessage: React.FC<Props> = ({
     partition: number;
   }) => {
     if (messageSchema) {
-      const key = data.key || keyExampleValue;
-      const content = data.content || contentExampleValue;
       const { partition } = data;
+      let { key, content } = data;
+      key = typeof key !== 'undefined' ? key : keyExampleValue;
+      content = typeof content !== 'undefined' ? content : contentExampleValue;
       const headers = data.headers ? JSON.parse(data.headers) : undefined;
       const messageIsValid = await validateMessage(
         key,
